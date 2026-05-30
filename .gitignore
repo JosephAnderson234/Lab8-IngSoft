@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+docs/
+ejemplos/
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Pruebas y cobertura
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Secretos y base de datos local
+.env
+*.db
+
+# Sonar
+.scannerwork/
+
+# IDE
+.idea/
+.vscode/
+
+# Artefactos temporales
+_lab_text.txt
+.claude
+sonar-scanner/

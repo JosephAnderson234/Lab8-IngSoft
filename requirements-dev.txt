@@ -1,0 +1,4 @@
+# Dependencias de desarrollo y pruebas.
+-r requirements.txt
+pytest>=8.0
+coverage>=6.0

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="320" viewBox="0 0 1680 320" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="uc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e9ecef"/>
+    </linearGradient>
+    <!-- filled arrowhead for actor associations -->
+    <marker id="assoc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+    </marker>
+    <!-- open V arrowhead for «include»/«extend» dependencies -->
+    <marker id="dep" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="13" markerHeight="13" orient="auto-start-reverse">
+      <path d="M1,1 L11,6 L1,11" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+    </marker>
+  </defs>
+
+  <rect width="1680" height="320" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="840" y="26" text-anchor="middle" font-size="20" font-weight="700" fill="#111">Sistema de Programa de Recompensas — Casos de Uso</text>
+
+  <!-- ===== System boundary ===== -->
+  <rect x="150" y="44" width="1360" height="244" rx="4" fill="none" stroke="#1a1a1a" stroke-width="1.6"/>
+  <text x="830" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#111">Sistema de Recompensas</text>
+
+  <!-- ===== Actors ===== -->
+  <!-- Restaurante (Afiliado) -->
+  <g stroke="#1a1a1a" stroke-width="1.8" fill="none">
+    <circle cx="60" cy="100" r="11" fill="#fff"/>
+    <line x1="60" y1="111" x2="60" y2="150"/>
+    <line x1="38" y1="124" x2="82" y2="124"/>
+    <line x1="60" y1="150" x2="42" y2="178"/>
+    <line x1="60" y1="150" x2="78" y2="178"/>
+  </g>
+  <text x="60" y="198" text-anchor="middle" font-size="14" fill="#111">Restaurante</text>
+  <text x="60" y="215" text-anchor="middle" font-size="14" fill="#111">(Afiliado)</text>
+
+  <!-- Cliente -->
+  <g stroke="#1a1a1a" stroke-width="1.8" fill="none">
+    <circle cx="60" cy="232" r="11" fill="#fff"/>
+    <line x1="60" y1="243" x2="60" y2="282"/>
+    <line x1="38" y1="256" x2="82" y2="256"/>
+    <line x1="60" y1="282" x2="42" y2="306"/>
+    <line x1="60" y1="282" x2="78" y2="306"/>
+  </g>
+  <text x="60" y="320" text-anchor="middle" font-size="14" fill="#111">Cliente</text>
+
+  <!-- Servicio de Email -->
+  <g stroke="#1a1a1a" stroke-width="1.8" fill="none">
+    <circle cx="1610" cy="190" r="11" fill="#fff"/>
+    <line x1="1610" y1="201" x2="1610" y2="240"/>
+    <line x1="1588" y1="214" x2="1632" y2="214"/>
+    <line x1="1610" y1="240" x2="1592" y2="266"/>
+    <line x1="1610" y1="240" x2="1628" y2="266"/>
+  </g>
+  <text x="1610" y="286" text-anchor="middle" font-size="14" fill="#111">Servicio de Email</text>
+
+  <!-- ===== Use cases (ellipses) ===== -->
+  <g stroke="#555" stroke-width="1.3">
+    <ellipse cx="262" cy="120" rx="76" ry="28" fill="url(#uc)"/>
+    <ellipse cx="520" cy="120" rx="88" ry="30" fill="url(#uc)"/>
+    <ellipse cx="800" cy="120" rx="82" ry="30" fill="url(#uc)"/>
+    <ellipse cx="1095" cy="120" rx="92" ry="32" fill="url(#uc)"/>
+    <ellipse cx="1400" cy="120" rx="84" ry="30" fill="url(#uc)"/>
+    <ellipse cx="262" cy="222" rx="84" ry="30" fill="url(#uc)"/>
+    <ellipse cx="1400" cy="222" rx="86" ry="30" fill="url(#uc)"/>
+  </g>
+
+  <g font-size="14" fill="#111" text-anchor="middle">
+    <text x="262" y="125">Registrar Cena</text>
+
+    <text x="520" y="114">Publicar Evento</text>
+    <text x="520" y="132">de Transacción</text>
+
+    <text x="800" y="114">Calcular Puntos</text>
+    <text x="800" y="132">/ Cashback</text>
+
+    <text x="1095" y="114">Actualizar Cuenta</text>
+    <text x="1095" y="132">de Recompensas</text>
+
+    <text x="1400" y="114">Crear Cuenta</text>
+    <text x="1400" y="132">de Recompensas</text>
+
+    <text x="262" y="216">Consultar Saldo</text>
+    <text x="262" y="234">de Puntos</text>
+
+    <text x="1400" y="216">Notificar al Cliente</text>
+    <text x="1400" y="234">(email)</text>
+  </g>
+
+  <!-- ===== Associations (solid) ===== -->
+  <line x1="84" y1="124" x2="184" y2="121" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#assoc)"/>
+  <line x1="84" y1="248" x2="180" y2="228" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#assoc)"/>
+  <line x1="1486" y1="222" x2="1582" y2="200" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#assoc)"/>
+
+  <!-- ===== «include» chain (dashed) ===== -->
+  <line x1="338" y1="120" x2="430" y2="120" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#dep)"/>
+  <text x="384" y="112" text-anchor="middle" font-size="12.5" font-style="italic" fill="#333">«include»</text>
+
+  <line x1="608" y1="120" x2="716" y2="120" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#dep)"/>
+  <text x="662" y="112" text-anchor="middle" font-size="12.5" font-style="italic" fill="#333">«include»</text>
+
+  <line x1="882" y1="120" x2="1001" y2="120" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#dep)"/>
+  <text x="942" y="112" text-anchor="middle" font-size="12.5" font-style="italic" fill="#333">«include»</text>
+
+  <!-- ===== «extend» (dashed, arrow toward Actualizar Cuenta) ===== -->
+  <line x1="1316" y1="120" x2="1189" y2="120" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#dep)"/>
+  <text x="1252" y="112" text-anchor="middle" font-size="12.5" font-style="italic" fill="#333">«extend»</text>
+
+  <path d="M1378,194 C1320,176 1240,160 1152,150" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#dep)"/>
+  <text x="1288" y="188" text-anchor="middle" font-size="12.5" font-style="italic" fill="#333">«extend»</text>
+
+  <!-- ===== "recibe" (dashed) from Notificar back to Cliente ===== -->
+  <path d="M1372,250 C1100,312 320,300 86,258" fill="none" stroke="#1a1a1a" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#assoc)"/>
+  <text x="720" y="306" text-anchor="middle" font-size="13" fill="#333">recibe</text>
+</svg>

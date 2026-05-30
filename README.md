@@ -93,7 +93,7 @@ src/rewards/
 ├── config.py               # Configuración desde variables de entorno
 ├── composicion.py          # Composition root (cableado)
 └── apps/                   # Entrypoints: productor_restaurante, consumidor_recompensas
-tests/                      # 56 pruebas (cobertura 96%)
+tests/                      # 59 pruebas (cobertura 96%)
 ```
 
 ---
@@ -116,10 +116,13 @@ cd Lab8-IngSoft
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1          # si falla: Set-ExecutionPolicy -Scope Process RemoteSigned
+.\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 pip install -r requirements-dev.txt
 ```
+
+> Si PowerShell bloquea la activación, ejecuta antes:
+> `Set-ExecutionPolicy -Scope Process RemoteSigned`.
 
 **Linux / macOS (bash):**
 
@@ -169,7 +172,35 @@ Para usar Kafka basta con `BROKER_TIPO=kafka` y `BROKER_PUERTO=9092` en el `.env
 
 ---
 
-## 5. Calidad (SonarQube)
+## 5. Evidencia de ejecución de pruebas automatizadas
+
+### 5.1 Ejecución de la suite (`pytest`)
+
+```bash
+python -m coverage run -m pytest -v
+```
+
+![Ejecución de las pruebas](assets/coverage_test_executed.png)
+
+- Entorno: **Python 3.11.1**, `pytest 9.0.3`, `pluggy 1.6.0` (Windows), configuración en `pytest.ini`.
+- Se recolectaron y ejecutaron **59 pruebas** y **todas pasaron** (`59 passed in 0.27s`), sin fallos ni omisiones.
+- Abarcan los 13 módulos de prueba: dominio, política, caso de uso, configuración, fábrica de brokers, serialización, seguridad, repositorios (memoria/SQLite), los tres adaptadores de mensajería (memoria, RabbitMQ, Kafka) y la composición/integración de extremo a extremo.
+
+### 5.2 Reporte de cobertura por módulo (`coverage report -m`)
+
+```bash
+python -m coverage report -m
+```
+
+![Cobertura por módulo](assets/coverage_report_per_module.png)
+
+- **Cobertura total: 96 %** (434 sentencias, 11 sin cubrir; 64 ramas, 7 parciales), por encima del mínimo exigido del **85 %**.
+- El **núcleo de negocio está al 100 %**: todo `domain/` (modelos, seguridad, errores) y `application/` (caso_uso, politica, puertos), además de `config.py` y `composicion.py`.
+- Las pocas líneas sin cubrir están solo en adaptadores de infraestructura que dependen de un broker real: `messaging/fabrica.py` (88 %), `messaging/rabbitmq.py` (88 %) y `messaging/kafka.py` (96 %); corresponden a ramas de conexión y manejo de errores de red que no se ejercitan con el broker en memoria.
+
+---
+
+## 6. Calidad (SonarQube)
 
 ```bash
 sonar-scanner -Dsonar.token=TU_TOKEN
@@ -185,7 +216,7 @@ sonar-scanner -Dsonar.token=TU_TOKEN
 
 ---
 
-## 6. Regla de negocio (política de recompensas)
+## 7. Regla de negocio (política de recompensas)
 
 | Nivel | Umbral de consumo | Cashback | Puntos |
 |---|---|---|---|
